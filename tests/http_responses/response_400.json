@@ -1,0 +1,8 @@
+{
+  "errorCode": "API_REQUEST_INVALID",
+  "message": "API Request was not valid",
+  "details": {
+    "parameter": "installationId",
+    "message": "For input string: \"666\""
+  }
+}

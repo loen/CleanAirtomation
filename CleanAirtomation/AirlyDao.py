@@ -3,8 +3,7 @@ import requests
 
 class AirlyDao:
 
-    def __init__(self, requests, api_key, installation_id):
-        self.requests = requests
+    def __init__(self, api_key, installation_id):
         self.apiKey = api_key
         self.installationId = installation_id
 
