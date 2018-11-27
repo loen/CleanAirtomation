@@ -2,6 +2,8 @@ import json
 import unittest
 from unittest import mock
 
+from requests import RequestException
+
 from CleanAirtomation.AirlyDao import AirlyDao
 
 
@@ -23,11 +25,24 @@ def mocked_requests_get(*args, **kwargs):
         return MockResponse(json_200, 200)
     elif args[0] == 'https://airapi.airly.eu/v2/measurements/installation?installationId=666':
         return MockResponse(json_400, 400)
+    elif args[0] == 'https://airapi.airly.eu/v2/measurements/installation?installationId=888':
+        raise RequestException()
     return MockResponse(None, 404)
 
 
 class AirlyDaoTest(unittest.TestCase):
+
     @mock.patch('requests.get', mocked_requests_get)
-    def test_request_wit_proper_installationId(self):
+    def test_request_with_proper_installationId(self):
         airlyDao = AirlyDao('API_KEY', 4444)
-        self.assertEquals(airlyDao.caqi(), 44.44)
+        self.assertEqual(airlyDao.caqi(), 44.44)
+
+    @mock.patch('requests.get', mocked_requests_get)
+    def test_request_with_invalid_installationId(self):
+        airlyDao = AirlyDao('API_KEY', 666)
+        self.assertIsNone(airlyDao.caqi())
+
+    @mock.patch('requests.get', mocked_requests_get)
+    def test_request_with_timeout(self):
+        airlyDao = AirlyDao('API_KEY', 888)
+        self.assertIsNone(airlyDao.caqi())
