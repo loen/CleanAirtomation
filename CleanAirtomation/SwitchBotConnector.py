@@ -1,4 +1,4 @@
-from subprocess import call
+import subprocess
 
 
 class SwitchBotConnector:
@@ -8,7 +8,7 @@ class SwitchBotConnector:
         self.mac = mac
 
     def push_the_button(self):
-        ret = call(['sudo', 'python', self.command_path, self.mac, "Press"])
+        ret = subprocess.call(['sudo', 'python', self.command_path, self.mac, "Press"])
         if ret == 0:
             return True
         else:
