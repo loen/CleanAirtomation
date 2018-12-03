@@ -34,15 +34,15 @@ class AirlyDaoTest(unittest.TestCase):
 
     @mock.patch('requests.get', mocked_requests_get)
     def test_request_with_proper_installationId(self):
-        airlyDao = AirlyDao('API_KEY', 4444)
+        airlyDao = AirlyDao('https://airapi.airly.eu', 'API_KEY', 4444)
         self.assertEqual(airlyDao.caqi(), 44.44)
 
     @mock.patch('requests.get', mocked_requests_get)
     def test_request_with_invalid_installationId(self):
-        airlyDao = AirlyDao('API_KEY', 666)
+        airlyDao = AirlyDao('https://airapi.airly.eu', 'API_KEY', 666)
         self.assertIsNone(airlyDao.caqi())
 
     @mock.patch('requests.get', mocked_requests_get)
     def test_request_with_timeout(self):
-        airlyDao = AirlyDao('API_KEY', 888)
+        airlyDao = AirlyDao('https://airapi.airly.eu', 'API_KEY', 888)
         self.assertIsNone(airlyDao.caqi())

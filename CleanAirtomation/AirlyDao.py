@@ -3,14 +3,15 @@ import requests
 
 class AirlyDao:
 
-    def __init__(self, api_key, installation_id):
+    def __init__(self, airly_url, api_key, installation_id):
+        self.airly_ulr = airly_url
         self.apiKey = api_key
         self.installationId = installation_id
 
     def caqi(self):
         try:
             response = requests.get(
-                'https://airapi.airly.eu/v2/measurements/installation?installationId=' + str(self.installationId),
+                self.airly_ulr + '/v2/measurements/installation?installationId=' + str(self.installationId),
                 headers={'Accept': 'application/json', 'apikey': self.apiKey})
             if response.status_code == 200:
                 resp = response.json()

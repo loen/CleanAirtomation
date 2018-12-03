@@ -8,8 +8,8 @@ class MockedConfig:
 
     def read_config(self):
         return {'commandPath': 'some_command',
-                'on_button_mac': 'AD:1W:87:PO:12:11',
-                'off_button_mac': 'FF:FF:FF:FF:FF:FF'}
+                'onButtonMac': 'AD:1W:87:PO:12:11',
+                'offButtonMac': 'FF:FF:FF:FF:FF:FF'}
 
 
 class AirPurifierTest(unittest.TestCase):

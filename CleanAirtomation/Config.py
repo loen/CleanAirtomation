@@ -7,7 +7,9 @@ class Config:
         with open("config.yaml", 'r') as stream:
             data_loaded = yaml.load(stream)
             return {'installationId': data_loaded['installationId'],
+                    'airlyUrl': data_loaded['airlyUrl'],
                     'apikey': data_loaded['apikey'],
                     'commandPath': data_loaded['commandPath'],
-                    'on_button_mac': data_loaded['on_button_mac'],
-                    'off_button_mac': data_loaded['off_button_mac']}
+                    'onButtonMac': data_loaded['onButtonMac'],
+                    'offButtonMac': data_loaded['offButtonMac'],
+                    'caqiTreshold': data_loaded['caqiTreshold']}

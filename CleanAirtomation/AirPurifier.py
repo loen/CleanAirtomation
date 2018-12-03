@@ -5,8 +5,8 @@ class AirPurifier:
 
     def __init__(self, config):
         conf = config.read_config()
-        self.on_button = SwitchBotConnector.SwitchBotConnector(conf['commandPath'], conf['on_button_mac'])
-        self.off_button = SwitchBotConnector.SwitchBotConnector(conf['commandPath'], conf['off_button_mac'])
+        self.on_button = SwitchBotConnector.SwitchBotConnector(conf['commandPath'], conf['onButtonMac'])
+        self.off_button = SwitchBotConnector.SwitchBotConnector(conf['commandPath'], conf['offButtonMac'])
         self.state = 0
 
     def turn_on(self):

@@ -1,5 +1,7 @@
+airlyUrl: 'https://airapi.airly.eu'
 apikey: AIRLY_API_KEY
 installationId: ID_OF_INSTALLATION
 commandPath: switchbot_py_path
-on_button_mac: on_mac
-off_button_mac: off_mac
+onButtonMac: on_mac
+offButtonMac: off_mac
+caqiTreshold: 75
