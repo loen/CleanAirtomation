@@ -1,4 +1,5 @@
 apikey: AIRLY_API_KEY
 installationId: ID_OF_INSTALLATION
 commandPath: switchbot_py_path
-mac: mac
+on_button_mac: on_mac
+off_button_mac: off_mac

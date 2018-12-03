@@ -9,4 +9,5 @@ class Config:
             return {'installationId': data_loaded['installationId'],
                     'apikey': data_loaded['apikey'],
                     'commandPath': data_loaded['commandPath'],
-                    'mac': data_loaded['mac']}
+                    'on_button_mac': data_loaded['on_button_mac'],
+                    'off_button_mac': data_loaded['off_button_mac']}
