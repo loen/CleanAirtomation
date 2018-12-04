@@ -5,3 +5,4 @@ commandPath: switchbot_py_path
 onButtonMac: on_mac
 offButtonMac: off_mac
 caqiTreshold: 75
+checkIntervalInMinutes: 1
