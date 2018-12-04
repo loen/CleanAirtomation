@@ -12,4 +12,5 @@ class Config:
                     'commandPath': data_loaded['commandPath'],
                     'onButtonMac': data_loaded['onButtonMac'],
                     'offButtonMac': data_loaded['offButtonMac'],
-                    'caqiTreshold': data_loaded['caqiTreshold']}
+                    'caqiTreshold': data_loaded['caqiTreshold'],
+                    'checkIntervalInMinutes': data_loaded['checkIntervalInMinutes']}
