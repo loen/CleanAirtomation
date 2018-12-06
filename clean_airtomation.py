@@ -1,12 +1,14 @@
 import time
 
-from CleanAirtomation import CleanAirtomationService
+from CleanAirtomation import CleanAirtomationService, AirlyDao, AirPurifier
 from CleanAirtomation.Config import Config
 
 config = Config()
-check_interval_min = config.read_config()['checkIntervalInMinutes']
-cleanAirtomationService = CleanAirtomationService.CleanAirtomationService(config)
+conf = config.read_config()
+airly_dao = AirlyDao.AirlyDao(conf['airlyUrl'], conf['apikey'], conf['installationId'])
+air_purifier = AirPurifier.AirPurifier(config)
+cleanAirtomationService = CleanAirtomationService.CleanAirtomationService(conf['caqiTreshold'], airly_dao, air_purifier)
 while True:
     cleanAirtomationService.clean_polluted_air()
-    time.sleep(check_interval_min * 60)
+    time.sleep(conf['checkIntervalInMinutes'] * 60)
 

@@ -1,14 +1,9 @@
-from CleanAirtomation import AirlyDao
-from CleanAirtomation import AirPurifier
-
-
 class CleanAirtomationService:
 
-    def __init__(self, config):
-        conf = config.read_config()
-        self.airly_dao = AirlyDao.AirlyDao(conf['airlyUrl'], conf['apikey'], conf['installationId'])
-        self.air_purifier = AirPurifier.AirPurifier(config)
-        self.caqi_treshold = conf['caqiTreshold']
+    def __init__(self, caqi_treshold, airly_dao, air_purifier):
+        self.airly_dao = airly_dao
+        self.air_purifier = air_purifier
+        self.caqi_treshold = caqi_treshold
 
     def clean_polluted_air(self):
         current_caqi = self.airly_dao.caqi()
