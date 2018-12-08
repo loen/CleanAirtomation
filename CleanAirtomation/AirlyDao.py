@@ -1,3 +1,6 @@
+import logging
+from logging.config import fileConfig
+
 import requests
 
 
@@ -7,6 +10,8 @@ class AirlyDao:
         self.airly_ulr = airly_url
         self.apiKey = api_key
         self.installationId = installation_id
+        fileConfig('logging_config.ini')
+        self.logger = logging.getLogger()
 
     def caqi(self):
         try:
@@ -19,5 +24,5 @@ class AirlyDao:
             else:
                 return None
         except requests.exceptions.RequestException:
-            print('Unable to connect to airapi.airly.eu')
+            self.logger.info('Unable to connect to airapi.airly.eu')
             return None
