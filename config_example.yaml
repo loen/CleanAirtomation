@@ -6,3 +6,7 @@ onButtonMac: on_mac
 offButtonMac: off_mac
 caqiTreshold: 75
 checkIntervalInMinutes: 1
+cleaningPause:
+  days: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday']
+  startTime: '8:00'
+  endTime: '16:00'

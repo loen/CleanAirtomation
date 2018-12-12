@@ -13,4 +13,5 @@ class Config:
                     'onButtonMac': data_loaded['onButtonMac'],
                     'offButtonMac': data_loaded['offButtonMac'],
                     'caqiTreshold': data_loaded['caqiTreshold'],
-                    'checkIntervalInMinutes': data_loaded['checkIntervalInMinutes']}
+                    'checkIntervalInMinutes': data_loaded['checkIntervalInMinutes'],
+                    'cleaningPause': data_loaded['cleaningPause']}
