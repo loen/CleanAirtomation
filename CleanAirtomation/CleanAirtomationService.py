@@ -35,8 +35,9 @@ class CleanAirtomationService:
                 self.logger.info('Unable to get CAQI from Airly')
         else:
             self.logger.info('Pause period - air purifier needs to be switched off')
-            if self.air_purifier.get_state == 1:
-                self.air_purifier.turn_off()
+            if self.air_purifier.get_state() == 1:
+                off_status = self.air_purifier.turn_off()
+                self.logger.info('air purifier turn off with status: %s' + str(off_status))
 
     def is_not_in_pause_time(self):
         weekdays = self.cleaning_pause['days']
