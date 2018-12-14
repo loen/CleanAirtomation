@@ -1,11 +1,13 @@
 import json
+import os
 import unittest
 from unittest import mock
 
 from requests import RequestException
 
-from CleanAirtomation.AirlyDao import AirlyDao
+from clean_airtomation.airly_dao import AirlyDao
 
+current_directory = os.path.dirname(__file__)
 
 def mocked_requests_get(*args, **kwargs):
     class MockResponse:
@@ -16,9 +18,9 @@ def mocked_requests_get(*args, **kwargs):
         def json(self):
             return self.json_data
 
-    with open('./http_responses/response_200.json') as f:
+    with open(os.path.join(current_directory, 'http_responses/response_200.json')) as f:
         json_200 = json.load(f)
-    with open('./http_responses/response_400.json') as f:
+    with open(os.path.join(current_directory, 'http_responses/response_400.json')) as f:
         json_400 = json.load(f)
     print(args[0])
     if args[0] == 'https://airapi.airly.eu/v2/measurements/installation?installationId=4444':

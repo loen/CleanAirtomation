@@ -1,7 +1,7 @@
 import time
 
-from CleanAirtomation import CleanAirtomationService, AirlyDao, AirPurifier
-from CleanAirtomation.Config import Config
+from clean_airtomation import CleanAirtomationService, AirlyDao, AirPurifier
+from clean_airtomation.Config import Config
 
 config = Config()
 conf = config.read_config()
