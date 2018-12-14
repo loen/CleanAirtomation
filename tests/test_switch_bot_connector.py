@@ -1,7 +1,7 @@
 import unittest
 from unittest import mock
 
-from CleanAirtomation.SwitchBotConnector import SwitchBotConnector
+from clean_airtomation.switch_bot_connector import SwitchBotConnector
 
 
 class SwitchBotConnectorTest(unittest.TestCase):

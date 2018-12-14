@@ -3,6 +3,8 @@ import datetime
 import logging
 from logging.config import fileConfig
 
+from clean_airtomation.air_purifier import AirPurifierState
+
 
 class CleanAirtomationService:
 
@@ -15,19 +17,19 @@ class CleanAirtomationService:
         self.logger = logging.getLogger()
 
     def clean_polluted_air(self):
-        if self.is_not_in_pause_time():
+        if self._is_not_in_pause_time():
             current_caqi = self.airly_dao.caqi()
             self.logger.info('current caqi value: %s', str(current_caqi))
             if current_caqi is not None:
                 if current_caqi > self.caqi_treshold:
                     self.logger.debug('CAQI above treshold, state of purifier = %d', self.air_purifier.get_state())
-                    if self.air_purifier.get_state() == 0:
+                    if self.air_purifier.get_state() == AirPurifierState.OFF:
                         self.logger.info('bad air - purifier needs to be switched on')
                         on_status = self.air_purifier.turn_on()
                         self.logger.info('air purifier turn on with status: %s', str(on_status))
                 else:
                     self.logger.info('CAQI below treshold, state of purifier = %d', self.air_purifier.get_state())
-                    if self.air_purifier.get_state() == 1:
+                    if self.air_purifier.get_state() == AirPurifierState.ON:
                         self.logger.info('good air - purifier needs to be switched off')
                         off_status = self.air_purifier.turn_off()
                         self.logger.info('air purifier turn off with status: %s', str(off_status))
@@ -39,7 +41,7 @@ class CleanAirtomationService:
                 off_status = self.air_purifier.turn_off()
                 self.logger.info('air purifier turn off with status: %s', str(off_status))
 
-    def is_not_in_pause_time(self):
+    def _is_not_in_pause_time(self):
         weekdays = self.cleaning_pause['days']
         start_hour = datetime.datetime.strptime(self.cleaning_pause['startTime'], "%H:%M")
         end_hour = datetime.datetime.strptime(self.cleaning_pause['endTime'], "%H:%M")

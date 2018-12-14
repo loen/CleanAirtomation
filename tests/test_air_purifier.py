@@ -1,7 +1,7 @@
 import unittest
 from unittest import mock
 
-from CleanAirtomation.AirPurifier import AirPurifier
+from clean_airtomation.air_purifier import AirPurifier
 
 
 class MockedConfig:

@@ -1,10 +1,16 @@
+import os
+
 import yaml
 
 
 class Config:
 
-    def read_config(self):
-        with open("config.yaml", 'r') as stream:
+    def read_config(self, base_dir=None):
+        config_path = "config.yaml"
+        if base_dir:
+            config_path = os.path.join(base_dir, config_path)
+
+        with open(config_path, 'r') as stream:
             data_loaded = yaml.load(stream)
             return {'installationId': data_loaded['installationId'],
                     'airlyUrl': data_loaded['airlyUrl'],

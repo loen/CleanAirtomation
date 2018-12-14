@@ -18,6 +18,7 @@ class AirlyDao:
             response = requests.get(
                 self.airly_ulr + '/v2/measurements/installation?installationId=' + str(self.installationId),
                 headers={'Accept': 'application/json', 'apikey': self.apiKey})
+
             if response.status_code == 200:
                 resp = response.json()
                 return resp['current']['indexes'][0]['value']
