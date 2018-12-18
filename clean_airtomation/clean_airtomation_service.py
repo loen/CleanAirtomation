@@ -31,10 +31,10 @@ class CleanAirtomationService:
 
     def _setup_air_purifier(self, current_caqi):
         if current_caqi > self.caqi_treshold:
-            self.logger.debug('CAQI above treshold, state of purifier = %d', self.air_purifier.get_state())
+            self.logger.debug('CAQI above treshold, state of purifier = %s', str(self.air_purifier.get_state()))
             self._handle_caqi_above_treshold()
         else:
-            self.logger.info('CAQI below treshold, state of purifier = %d', self.air_purifier.get_state())
+            self.logger.info('CAQI below treshold, state of purifier = %s', str(self.air_purifier.get_state()))
             self._handle_caqi_below_treshold()
 
     def _handle_pause_time(self):
