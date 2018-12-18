@@ -1,12 +1,12 @@
-from enum import Enum, auto
+from enum import Enum
 
 from clean_airtomation.config import Config
 from clean_airtomation.switch_bot_connector import SwitchBotConnector
 
 
 class AirPurifierState(Enum):
-    ON = auto()
-    OFF = auto()
+    ON = 1
+    OFF = 0
 
 
 class AirPurifier:
