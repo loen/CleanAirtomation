@@ -25,7 +25,7 @@ class AirPurifier:
         else:
             return False
 
-    def turn_off(self):
+    def turn_off(self) -> bool:
         result = self.off_button.push_the_button()
         if result:
             self.state = AirPurifierState.OFF

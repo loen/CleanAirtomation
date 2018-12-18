@@ -1,7 +1,7 @@
 import unittest
 from unittest import mock
 
-from clean_airtomation.air_purifier import AirPurifier
+from clean_airtomation.air_purifier import AirPurifier, AirPurifierState
 
 
 class MockedConfig:
@@ -36,38 +36,38 @@ class AirPurifierTest(unittest.TestCase):
     def test_switch_on_success(self):
         air_purifier = AirPurifier(MockedConfig())
         self.assertTrue(air_purifier.turn_on())
-        self.assertEqual(1, air_purifier.get_state())
+        self.assertEqual(AirPurifierState.ON, air_purifier.get_state())
 
     @mock.patch('subprocess.call', cmd_call_false)
     def test_switch_on_failure(self):
         air_purifier = AirPurifier(MockedConfig())
         self.assertFalse(air_purifier.turn_on())
-        self.assertEqual(0, air_purifier.get_state())
+        self.assertEqual(AirPurifierState.OFF, air_purifier.get_state())
 
     @mock.patch('subprocess.call', cmd_call_true)
     def test_switch_off_success(self):
         air_purifier = AirPurifier(MockedConfig())
         self.assertTrue(air_purifier.turn_off())
-        self.assertEqual(0, air_purifier.get_state())
+        self.assertEqual(AirPurifierState.OFF, air_purifier.get_state())
 
     @mock.patch('subprocess.call', cmd_call_false)
     def test_switch_off_failure(self):
         air_purifier = AirPurifier(MockedConfig())
         self.assertFalse(air_purifier.turn_off())
-        self.assertEqual(0, air_purifier.get_state())
+        self.assertEqual(AirPurifierState.OFF, air_purifier.get_state())
 
     @mock.patch('subprocess.call', cmd_call_false_for_off_button)
     def test_switch_on_success_switch_off_failure(self):
         air_purifier = AirPurifier(MockedConfig())
         self.assertTrue(air_purifier.turn_on())
-        self.assertEqual(1, air_purifier.get_state())
+        self.assertEqual(AirPurifierState.ON, air_purifier.get_state())
         self.assertFalse(air_purifier.turn_off())
-        self.assertEqual(1, air_purifier.get_state())
+        self.assertEqual(AirPurifierState.ON, air_purifier.get_state())
 
     @mock.patch('subprocess.call', cmd_call_false_for_on_button)
     def test_switch_off_success_switch_on_failure(self):
         air_purifier = AirPurifier(MockedConfig())
         self.assertTrue(air_purifier.turn_off())
-        self.assertEqual(0, air_purifier.get_state())
+        self.assertEqual(AirPurifierState.OFF, air_purifier.get_state())
         self.assertFalse(air_purifier.turn_on())
-        self.assertEqual(0, air_purifier.get_state())
+        self.assertEqual(AirPurifierState.OFF, air_purifier.get_state())

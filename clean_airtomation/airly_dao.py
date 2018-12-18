@@ -13,7 +13,7 @@ class AirlyDao:
         fileConfig('logging_config.ini')
         self.logger = logging.getLogger()
 
-    def caqi(self):
+    def caqi(self) -> [int, None]:
         try:
             response = requests.get(
                 self.airly_ulr + '/v2/measurements/installation?installationId=' + str(self.installationId),
