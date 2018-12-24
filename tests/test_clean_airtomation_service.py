@@ -34,7 +34,7 @@ class CleanAirtomationServiceTest(unittest.TestCase):
         air_purifier.turn_on = MagicMock()
         cleaning_pause = self.get_cleaning_pause(['Monday', 'Tuesday', 'Wednesday'], '8:00', '16:00')
         clean_airtomation_service = CleanAirtomationService(70, cleaning_pause, airily_dao,
-                                                                                    air_purifier)
+                                                            air_purifier)
         # test
         clean_airtomation_service.clean_polluted_air()
 
@@ -53,7 +53,7 @@ class CleanAirtomationServiceTest(unittest.TestCase):
         air_purifier.turn_on = MagicMock()
         cleaning_pause = self.get_cleaning_pause(['Monday', 'Tuesday', 'Wednesday'], '8:00', '16:00')
         clean_airtomation_service = CleanAirtomationService(70, cleaning_pause, airily_dao,
-                                                                                    air_purifier)
+                                                            air_purifier)
         # test
         clean_airtomation_service.clean_polluted_air()
 
@@ -73,7 +73,7 @@ class CleanAirtomationServiceTest(unittest.TestCase):
         air_purifier.turn_on = MagicMock()
         cleaning_pause = self.get_cleaning_pause(['Monday', 'Tuesday', 'Wednesday'], '8:00', '16:00')
         clean_airtomation_service = CleanAirtomationService(70, cleaning_pause, airily_dao,
-                                                                                    air_purifier)
+                                                            air_purifier)
         # test
         clean_airtomation_service.clean_polluted_air()
 
@@ -92,7 +92,7 @@ class CleanAirtomationServiceTest(unittest.TestCase):
         air_purifier.turn_on = MagicMock()
         cleaning_pause = self.get_cleaning_pause(['Monday', 'Tuesday', 'Wednesday'], '8:00', '16:00')
         clean_airtomation_service = CleanAirtomationService(70, cleaning_pause, airily_dao,
-                                                                                    air_purifier)
+                                                            air_purifier)
 
         # test
         clean_airtomation_service.clean_polluted_air()
@@ -114,7 +114,7 @@ class CleanAirtomationServiceTest(unittest.TestCase):
         air_purifier.get_state = MagicMock(return_value=AirPurifierState.ON)
         cleaning_pause = self.get_cleaning_pause(['Monday', 'Tuesday', 'Wednesday'], '8:00', '16:00')
         clean_airtomation_service = CleanAirtomationService(70, cleaning_pause, airily_dao,
-                                                                                    air_purifier)
+                                                            air_purifier)
 
         # test
         clean_airtomation_service.clean_polluted_air()
@@ -136,7 +136,7 @@ class CleanAirtomationServiceTest(unittest.TestCase):
         air_purifier.get_state = MagicMock(return_value=AirPurifierState.OFF)
         cleaning_pause = self.get_cleaning_pause(['Monday', 'Tuesday', 'Wednesday'], '8:00', '16:00')
         clean_airtomation_service = CleanAirtomationService(70, cleaning_pause, airily_dao,
-                                                                                    air_purifier)
+                                                            air_purifier)
 
         # test
         clean_airtomation_service.clean_polluted_air()
@@ -159,7 +159,7 @@ class CleanAirtomationServiceTest(unittest.TestCase):
         air_purifier.get_state = MagicMock(return_value=AirPurifierState.ON)
         cleaning_pause = self.get_cleaning_pause(['Monday', 'Tuesday', 'Wednesday'], '8:00', '16:00')
         clean_airtomation_service = CleanAirtomationService(70, cleaning_pause, airily_dao,
-                                                                                    air_purifier)
+                                                            air_purifier)
 
         # test
         clean_airtomation_service.clean_polluted_air()
@@ -182,7 +182,7 @@ class CleanAirtomationServiceTest(unittest.TestCase):
         air_purifier.get_state = MagicMock(return_value=AirPurifierState.ON)
         cleaning_pause = self.get_cleaning_pause(['Monday', 'Tuesday', 'Wednesday'], '8:00', '16:00')
         clean_airtomation_service = CleanAirtomationService(70, cleaning_pause, airily_dao,
-                                                                                    air_purifier)
+                                                            air_purifier)
 
         # test
         result = clean_airtomation_service._is_not_in_pause_time()
@@ -201,7 +201,7 @@ class CleanAirtomationServiceTest(unittest.TestCase):
         air_purifier.get_state = MagicMock(return_value=AirPurifierState.ON)
         cleaning_pause = self.get_cleaning_pause(['Monday', 'Tuesday', 'Wednesday'], '8:00', '16:00')
         clean_airtomation_service = CleanAirtomationService(70, cleaning_pause, airily_dao,
-                                                                                    air_purifier)
+                                                            air_purifier)
         # test
         result = clean_airtomation_service._is_not_in_pause_time()
 
@@ -219,7 +219,7 @@ class CleanAirtomationServiceTest(unittest.TestCase):
         air_purifier.get_state = MagicMock(return_value=AirPurifierState.ON)
         cleaning_pause = self.get_cleaning_pause(['Monday', 'Tuesday', 'Wednesday'], '8:00', '16:00')
         clean_airtomation_service = CleanAirtomationService(70, cleaning_pause, airily_dao,
-                                                                                    air_purifier)
+                                                            air_purifier)
         # test
         result = clean_airtomation_service._is_not_in_pause_time()
 
@@ -237,7 +237,7 @@ class CleanAirtomationServiceTest(unittest.TestCase):
         air_purifier.get_state = MagicMock(return_value=AirPurifierState.ON)
         cleaning_pause = self.get_cleaning_pause(['Monday', 'Tuesday', 'Wednesday'], '8:00', '16:00')
         clean_airtomation_service = CleanAirtomationService(70, cleaning_pause, airily_dao,
-                                                                                    air_purifier)
+                                                            air_purifier)
         # test
         result = clean_airtomation_service._is_not_in_pause_time()
 
@@ -255,7 +255,7 @@ class CleanAirtomationServiceTest(unittest.TestCase):
         air_purifier.get_state = MagicMock(return_value=AirPurifierState.ON)
         cleaning_pause = self.get_cleaning_pause(['Monday', 'Tuesday', 'Wednesday'], '8:00', '16:00')
         clean_airtomation_service = CleanAirtomationService(70, cleaning_pause, airily_dao,
-                                                                                    air_purifier)
+                                                            air_purifier)
         # test
         result = clean_airtomation_service._is_not_in_pause_time()
 
@@ -273,9 +273,46 @@ class CleanAirtomationServiceTest(unittest.TestCase):
         air_purifier.get_state = MagicMock(return_value=AirPurifierState.ON)
         cleaning_pause = self.get_cleaning_pause(['Monday', 'Tuesday', 'Wednesday'], '8:00', '16:00')
         clean_airtomation_service = CleanAirtomationService(70, cleaning_pause, airily_dao,
-                                                                                    air_purifier)
+                                                            air_purifier)
         # test
         result = clean_airtomation_service._is_not_in_pause_time()
 
         # verify
         self.assertFalse(result)
+
+    @freeze_time("2018-12-12 9:00:00")
+    def test_pause_period_before_on(self):
+        # setup
+        airily_dao = AirlyDao('url', 'key', 28)
+        airily_dao.caqi = MagicMock(return_value=80)
+        air_purifier = AirPurifier(ConfigMock())
+        air_purifier.turn_off = MagicMock()
+        air_purifier.get_state = MagicMock(return_value=AirPurifierState.ON)
+        cleaning_pause = self.get_cleaning_pause(['Monday', 'Tuesday', 'Wednesday'], '8:00', '16:00')
+        clean_airtomation_service = CleanAirtomationService(70, cleaning_pause, airily_dao,
+                                                            air_purifier)
+        # test
+        clean_airtomation_service.clean_polluted_air()
+
+        # verify
+        airily_dao.caqi.assert_not_called()
+        air_purifier.turn_off.assert_called_once()
+
+    @freeze_time("2018-12-12 9:00:00")
+    def test_pause_period_before_off(self):
+        # setup
+        airily_dao = AirlyDao('url', 'key', 28)
+        airily_dao.caqi = MagicMock(return_value=80)
+        air_purifier = AirPurifier(ConfigMock())
+        air_purifier.turn_off = MagicMock()
+        air_purifier.get_state = MagicMock(return_value=AirPurifierState.OFF)
+        cleaning_pause = self.get_cleaning_pause(['Monday', 'Tuesday', 'Wednesday'], '8:00', '16:00')
+        clean_airtomation_service = CleanAirtomationService(70, cleaning_pause, airily_dao,
+                                                            air_purifier)
+        # test
+        clean_airtomation_service.clean_polluted_air()
+
+        # verify
+        airily_dao.caqi.assert_not_called()
+        air_purifier.turn_off.assert_not_called()
+
