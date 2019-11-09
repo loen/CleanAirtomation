@@ -18,11 +18,14 @@ class CalendarDao:
                 tree = html.fromstring(response.content)
                 text = tree.xpath("//span[contains(@class,'dc_feasts')]/span/text()")
                 if len(text) > 0:
-                    print(text[0])
+                    self.logger.info(text[0])
+                    self.logger.info('Today is Holiday')
                     return True
                 else:
+                    self.logger.info('Today is NOT Holiday')
                     return False
             else:
+                self.logger.error('response with error code from kalendarzswiat.pl')
                 return False
         except requests.exceptions.RequestException:
             self.logger.info('Unable to connect to kalendarzswiat.pl')

@@ -66,6 +66,29 @@ class CleanAirtomationServiceTest(unittest.TestCase):
         air_purifier.turn_on.assert_called_once()
 
     @freeze_time("2018-12-12 21:00:00")
+    def test_turn_on_purifier_when_holiday(self):
+        # setup
+        airily_dao = AirlyDao('url', 'key', 28)
+        airily_dao.caqi = MagicMock(return_value=100)
+        calendar_dao = CalendarDao('url')
+        calendar_dao.is_holiday = MagicMock(return_value=True)
+        air_purifier = AirPurifier(ConfigMock())
+        air_purifier.turn_off = MagicMock()
+        air_purifier.turn_on = MagicMock()
+        cleaning_pause = self.get_cleaning_pause(['Monday', 'Tuesday', 'Wednesday'], '8:00', '16:00')
+        clean_airtomation_service = CleanAirtomationService(70, cleaning_pause, airily_dao, calendar_dao,
+                                                            air_purifier)
+        clean_airtomation_service._pause_time_not_in_holiday = MagicMock()
+        # test
+        clean_airtomation_service.clean_polluted_air()
+
+        # verify
+        airily_dao.caqi.assert_called_once()
+        air_purifier.turn_off.assert_not_called()
+        air_purifier.turn_on.assert_called_once()
+        clean_airtomation_service._pause_time_not_in_holiday.assert_not_called()
+
+    @freeze_time("2018-12-12 21:00:00")
     def test_turn_off_purifier(self):
         # setup
         airily_dao = AirlyDao('url', 'key', 28)

@@ -10,7 +10,8 @@ from clean_airtomation.calendar_dao import CalendarDao
 
 class CleanAirtomationService:
 
-    def __init__(self, caqi_treshold, cleaning_pause, airly_dao: AirlyDao, calendar_dao: CalendarDao, air_purifier: AirPurifier):
+    def __init__(self, caqi_treshold, cleaning_pause, airly_dao: AirlyDao, calendar_dao: CalendarDao,
+                 air_purifier: AirPurifier):
         self.airly_dao = airly_dao
         self.calendar_dao = calendar_dao
         self.air_purifier = air_purifier
@@ -57,6 +58,12 @@ class CleanAirtomationService:
             self.logger.info('air purifier turn on with status: %s', str(on_status))
 
     def _is_not_in_pause_time(self) -> bool:
+        if self.calendar_dao.is_holiday():
+            return True
+        else:
+            return self._pause_time_not_in_holiday()
+
+    def _pause_time_not_in_holiday(self) -> bool:
         weekdays = self.cleaning_pause['days']
         start_hour = datetime.datetime.strptime(self.cleaning_pause['startTime'], "%H:%M")
         end_hour = datetime.datetime.strptime(self.cleaning_pause['endTime'], "%H:%M")
