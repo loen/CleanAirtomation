@@ -5,12 +5,14 @@ from logging.config import fileConfig
 
 from clean_airtomation.air_purifier import AirPurifierState, AirPurifier
 from clean_airtomation.airly_dao import AirlyDao
+from clean_airtomation.calendar_dao import CalendarDao
 
 
 class CleanAirtomationService:
 
-    def __init__(self, caqi_treshold, cleaning_pause, airly_dao: AirlyDao, air_purifier: AirPurifier):
+    def __init__(self, caqi_treshold, cleaning_pause, airly_dao: AirlyDao, calendar_dao: CalendarDao, air_purifier: AirPurifier):
         self.airly_dao = airly_dao
+        self.calendar_dao = calendar_dao
         self.air_purifier = air_purifier
         self.caqi_treshold = caqi_treshold
         self.cleaning_pause = cleaning_pause
